@@ -466,26 +466,44 @@
             <div class="input-container"> <input class="input-field" type="tel" name="Phone Number" id="whatsappNumber"
                     placeholder="" required> <label class="label-input" for="whatsappNumber">WhatsApp Number <span
                         class="required">*</span></label> </div><br>
-                        
-                        
-      <div class="input-container"> <select class="select-field" name="Gender" id="gender" required>
+
+
+            <div class="input-container">
+                <select class="select-field" name="Gender" id="gender" required>
                     <option value="" disabled selected>Select Gender</option>
-     <option value="Male">🧑 Male</option>
-   <option value="Female">👧 Female</option>
-                </select> </div><br> 
-                        
-                        
+                    <option value="Male">🧑 Male</option>
+                    <option value="Female">👧 Female</option>
+                </select>
+            </div><br>
+
+            <div class="input-container">
+                <select class="select-field" name="Source From" id="sourcefrom" required>
+                    <option value="" disabled selected>How did you know about this Party..?</option>
+                    <option value="AfroVibes Instagram Page">AfroVibes Instagram Page</option>
+                    <option value="Whatsapp Status">Whatsapp Status</option>
+                    <option value="People Talking About">People Talking About</option>
+                    <option value="Some AfroVibe's Seller">Some AfroVibe's Seller</option>
+                </select>
+            </div><br>
+
+            <div class="input-container" id="sellername-container" style="display: none;">
+                <input class="input-field" type="text" name="Seller Name" id="sellername" placeholder="">
+                <label class="label-input" for="sellername">Seller Name <span class="required">*</span></label>
+            </div>
+
+
             <div class="input-container"> <select class="select-field" name="Ticket Option" id="ticketOption" required>
                     <option value="" disabled selected>Select Ticket</option>
                     <option value="Single Payment: ₹2,000">Single Payment: ₹2,000</option>
-                    <option value="Pay Partial Payment ₹1,000 Now & ₹1,000 before Dec 10th">Pay Partial Payment: ₹1,000 Now &
+                    <option value="Pay Partial Payment ₹1,000 Now & ₹1,000 before Dec 10th">Pay Partial Payment: ₹1,000
+                        Now &
                         ₹1,000 before Dec 10th</option>
                     <option value="Group Payment of 5 People ₹9,500">Group Payment of 5 People: ₹9,500</option>
                 </select> </div><br>
-                
-                
-                
-                
+
+
+
+
             <div class="input-container"> <select class="select-field" name="Drink Preference" id="drinkPreference"
                     required>
                     <option value="" disabled selected>Which drink do you prefer?</option>
@@ -539,8 +557,7 @@
                 <div style="display: flex; gap: 10px;">
                     <h3>Send Payment Screenshot</h3>
                     <div class="bank" style="justify-content: right;"> <a href="javascript:void(0)"
-                        onclick="sendWhatsAppMessage()"
-                            style="color: green; text-decoration: none;"> <img
+                            onclick="sendWhatsAppMessage()" style="color: green; text-decoration: none;"> <img
                                 src="https://cdn-icons-png.flaticon.com/512/15713/15713434.png"
                                 style="width: 35px; height: 35px; margin-top: 10px;"> </a> </div>
                 </div>
@@ -694,27 +711,40 @@
             window.location.href = url;
         }
 
+        //Afrovibese Seller Releaser
+        document.getElementById("sourcefrom").addEventListener("change", function () {
+            const sellerNameContainer = document.getElementById("sellername-container");
+            const sellerNameInput = document.getElementById("sellername");
+
+            if (this.value === "Some AfroVibe's Seller") {
+                sellerNameContainer.style.display = "block";
+                sellerNameInput.setAttribute("required", "required"); // Make required when selected
+            } else {
+                sellerNameContainer.style.display = "none";
+                sellerNameInput.removeAttribute("required"); // Remove required when not selected
+            }
+        });
     </script>
 
     <script>
-    // Disable right-click context menu
-    document.oncontextmenu = function() {
-        return false;
-    };
+        // Disable right-click context menu
+        document.oncontextmenu = function () {
+            return false;
+        };
 
-    // Disable certain key combinations
-    document.onkeydown = function(e) {
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-            return false;
-        }
-        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-            return false;
-        }
-    };
-</script>
-    </body>
+        // Disable certain key combinations
+        document.onkeydown = function (e) {
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+        };
+    </script>
+</body>
 
 </html>
