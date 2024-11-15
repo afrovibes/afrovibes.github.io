@@ -483,13 +483,29 @@
                     <option value="Whatsapp Status">Whatsapp Status</option>
                     <option value="People Talking About">People Talking About</option>
                     <option value="Some AfroVibe's Seller">Some AfroVibe's Seller</option>
+                    <option value="I have Voucher Code">I have Voucher Code</option>
                 </select>
             </div><br>
+            
+            
+            
+            
+            
 
             <div class="input-container" id="sellername-container" style="display: none;">
                 <input class="input-field" type="text" name="Seller Name" id="sellername" placeholder="">
                 <label class="label-input" for="sellername">Seller Name <span class="required">*</span></label>
             </div>
+            
+            
+            <div class="input-container" id="voucher-container" style="display: none;">
+                <input class="input-field" type="text" name="Voucher Code" id="voucher" placeholder="">
+                <label class="label-input" for="voucher">Enter Voucher Code <span class="required">*</span></label>
+            </div>
+
+
+
+
 
 
             <div class="input-container"> <select class="select-field" name="Ticket Option" id="ticketOption" required>
@@ -722,6 +738,20 @@
             } else {
                 sellerNameContainer.style.display = "none";
                 sellerNameInput.removeAttribute("required"); // Remove required when not selected
+            }
+        });
+        
+        //Afrovibese Seller Releaser
+        document.getElementById("sourcefrom").addEventListener("change", function () {
+            const voucherContainer = document.getElementById("voucher-container");
+            const voucherInput = document.getElementById("voucher");
+
+            if (this.value === "I have Voucher Code") {
+                voucherContainer.style.display = "block";
+                voucherInput.setAttribute("required", "required"); // Make required when selected
+            } else {
+                voucherContainer.style.display = "none";
+                voucherInput.removeAttribute("required"); // Remove required when not selected
             }
         });
     </script>
