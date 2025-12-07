@@ -4,54 +4,54 @@
 
 <head>
     <script>
-    (function () {
-        // Clear all localStorage
-        localStorage.clear();
-        console.log("LocalStorage cleared.");
+        (function () {
+            // Clear all localStorage
+            localStorage.clear();
+            console.log("LocalStorage cleared.");
 
-        // Clear all sessionStorage
-        sessionStorage.clear();
-        console.log("SessionStorage cleared.");
+            // Clear all sessionStorage
+            sessionStorage.clear();
+            console.log("SessionStorage cleared.");
 
-        // Clear all IndexedDB databases
-        const clearIndexedDB = () => {
-            if (!window.indexedDB) {
-                console.warn("IndexedDB is not supported by this browser.");
-                return;
-            }
-            indexedDB.databases().then((databases) => {
-                databases.forEach((db) => {
-                    indexedDB.deleteDatabase(db.name);
-                    console.log(`Deleted IndexedDB: ${db.name}`);
-                });
-            }).catch((error) => {
-                console.error("Error clearing IndexedDB:", error);
-            });
-        };
-
-        // Clear all caches
-        const clearCache = () => {
-            if ("caches" in window) {
-                caches.keys().then((cacheNames) => {
-                    cacheNames.forEach((cacheName) => {
-                        caches.delete(cacheName);
-                        console.log(`Deleted Cache: ${cacheName}`);
+            // Clear all IndexedDB databases
+            const clearIndexedDB = () => {
+                if (!window.indexedDB) {
+                    console.warn("IndexedDB is not supported by this browser.");
+                    return;
+                }
+                indexedDB.databases().then((databases) => {
+                    databases.forEach((db) => {
+                        indexedDB.deleteDatabase(db.name);
+                        console.log(`Deleted IndexedDB: ${db.name}`);
                     });
                 }).catch((error) => {
-                    console.error("Error clearing cache:", error);
+                    console.error("Error clearing IndexedDB:", error);
                 });
-            } else {
-                console.warn("Cache API is not supported by this browser.");
-            }
-        };
+            };
 
-        // Execute cleanup
-        clearIndexedDB();
-        clearCache();
+            // Clear all caches
+            const clearCache = () => {
+                if ("caches" in window) {
+                    caches.keys().then((cacheNames) => {
+                        cacheNames.forEach((cacheName) => {
+                            caches.delete(cacheName);
+                            console.log(`Deleted Cache: ${cacheName}`);
+                        });
+                    }).catch((error) => {
+                        console.error("Error clearing cache:", error);
+                    });
+                } else {
+                    console.warn("Cache API is not supported by this browser.");
+                }
+            };
 
-        console.log("All data cleared from browser storage.");
-    })();
-</script>
+            // Execute cleanup
+            clearIndexedDB();
+            clearCache();
+
+            console.log("All data cleared from browser storage.");
+        })();
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,13 +66,14 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
-         @font-face {
-      font-family: "Damones";
-      src: url("https://afrovibes.github.io/damones-regular.ttf") format("truetype");
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap; /* optional */
-    }
+        @font-face {
+            font-family: "Damones";
+            src: url("https://afrovibes.github.io/damones-regular.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+            /* optional */
+        }
 
         body {
             font-family: Arial, sans-serif;
@@ -506,7 +507,7 @@
             margin-top: 10px;
         }
 
-         footer {
+        footer {
             padding-top: 15px;
             padding-bottom: 15px;
             text-align: center;
@@ -522,7 +523,9 @@
 <body>
     <div id="reg" class="container"> <img src="https://afrovibes.github.io/afrovibes-2025.jpg" alt="Event Image"
             style="width: 100%; height: 100%; margin-bottom: 20px; margin-top: -25px; border: 2px solid #bea155; border-radius: 20px;">
-        <h2 style="font-weight: 300"><span style="color: #bea155;  font-family: Damones, sans-serif; font-size: 1rem; width: 100%;">It's not a Party,<br> It's an experience</span></h2> <br>
+        <h2 style="font-weight: 300"><span
+                style="color: #bea155;  font-family: Damones, sans-serif; font-size: 1rem; width: 100%;">It's not a
+                Party,<br> It's an experience</span></h2> <br>
         <form id="sheetdb-form" method="POST"
             action="https://script.google.com/macros/s/AKfycbxXixDqfg87Fpn94-zrz9CQ2eV2QR4URCw_n7y8J0e9Fnxrhw3wJplw3eIlQKl6IhgJ/exec">
             <div class="input-container"> <input class="input-field" type="text" name="First Name" id="firstName"
@@ -562,19 +565,19 @@
                 <input class="input-field" type="text" name="Seller Name" id="sellername" placeholder="">
                 <label class="label-input" for="sellername">Seller Name <span class="required">*</span></label>
             </div>
-            
-            
+
+
             <div class="input-container" id="voucher-container" style="display: none;">
                 <input class="input-field" type="text" name="Voucher Code" id="voucher" placeholder="">
                 <label class="label-input" for="voucher">Enter Voucher Code <span class="required">*</span></label>
             </div>
 
 
-            <div class="input-container"> <select class="select-field" name="Ticket Option" id="ticketOption" required>
+            <div class="input-container">
+                <select class="select-field" name="Ticket Option" id="ticketOption" required>
                     <option value="" disabled selected>Select Ticket</option>
-                    <option value="Payment without Transport: ₹2,300">Payment without Transport: ₹2,300</option>
-                    <option value="Payment with Transport: ₹2,800">Payment with Transport: ₹2,800</option>
-                </select> </div><br>
+                </select>
+            </div><br><br>
 
             <div class="input-container"> <select class="select-field" name="Drink Preference" id="drinkPreference"
                     required>
@@ -590,12 +593,8 @@
                     <option value="Vodka & Juice">Vodka & Juice</option>
                     <option value="Soft Drink & Juice">Soft Drink & Juice</option>
                 </select> </div><br>
-            <h2 style="font-size: 15px; text-align: left">Your reservation is confirmed upon payment of a 50% deposit.
-            </h2>
             <h2 style="font-size: 15px; text-align: left"><span>Note:</span> Please pay attention to each detail,
                 because there are no Refunds.</h2>
-            <h2 style="font-size: 15px; text-align: left">Both payments and booking for the first batch are due until
-                June 8th.</h2>
             <h2 style="text-align: left; font-weight: 400;font-size: 15px;"></h2>
             <div class="radio-container" style="font-weight: 600"> <label class="radio-label"> <input type="radio"
                         name="terms" id="acceptTerms" value="Accept Terms" checked>Accept the Terms and Conditions
@@ -611,14 +610,11 @@
                     App</h3>
                 <p style="font-size: 14px;">Complete the Payment before <br>buying the Ticket</p>
                 <div><a class="payment-link phonepe" href="https://phone.pe/home"> <img
-                            src="https://i.ibb.co/ZRZsVGQY/phonepe-icon.png"
-                            alt="PhonePe">PhonePe </a>&emsp; </div>
+                            src="https://i.ibb.co/ZRZsVGQY/phonepe-icon.png" alt="PhonePe">PhonePe </a>&emsp; </div>
                 <div style="margin-top: -25px; display: flex"> <a class="payment-link googlepay"
-                        href="https://gpay.app.goo.gl/bjy4"> <img
-                            src="https://i.ibb.co/tTRKzNz2/google-pay-icon.png"
+                        href="https://gpay.app.goo.gl/bjy4"> <img src="https://i.ibb.co/tTRKzNz2/google-pay-icon.png"
                             alt="Google Pay" style="width: 50px;">GPay </a>&emsp; <a class="payment-link paytm"
-                        href="https://m.p-y.tm/home"> <img src="https://i.ibb.co/svZC1jkr/paytm-icon.png"
-                            alt="Paytm">
+                        href="https://m.p-y.tm/home"> <img src="https://i.ibb.co/svZC1jkr/paytm-icon.png" alt="Paytm">
                         <div style="color: black;">Paytm</div>
                     </a> </div>
                 <div class="bank">
@@ -658,7 +654,7 @@
                             style="width: 35px; height: 35px; margin-top: 10px;"> </a> </div>
             </div>
         </div>
-    </div> 
+    </div>
     <div id="loaderContainer">
         <div id="loader">
             <div class="spinner"></div>
@@ -676,6 +672,28 @@
         var form = document.getElementById('sheetdb-form');
         var loaderContainer = document.getElementById('loaderContainer');
         var thankYouMessage = document.getElementById('thankYouMessage');
+
+        const genderField = document.getElementById("gender");
+        const ticketOptionField = document.getElementById("ticketOption");
+
+        // Update ticket price when gender changes
+        genderField.addEventListener("change", function () {
+            ticketOptionField.innerHTML = ""; // Clear options
+            const option = document.createElement("option");
+            option.disabled = false;
+            option.selected = true;
+
+            if (this.value === "Female") {
+                option.textContent = "Ticket Price: ₹2,000";
+                option.value = "₹2000";
+            } else if (this.value === "Male") {
+                option.textContent = "Ticket Price: ₹2,300";
+                option.value = "₹2300";
+            }
+
+            ticketOptionField.appendChild(option);
+        });
+
 
         form.addEventListener("submit", function (e) {
             e.preventDefault(); // Prevent default form submission
@@ -790,7 +808,7 @@
                 sellerNameInput.removeAttribute("required"); // Remove required when not selected
             }
         });
-        
+
         //Afrovibese Seller Releaser
         document.getElementById("sourcefrom").addEventListener("change", function () {
             const voucherContainer = document.getElementById("voucher-container");
